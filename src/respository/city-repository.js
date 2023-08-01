@@ -15,6 +15,18 @@ class CityRepository {
         }
     }
 
+    async createMultipleCity(data) { 
+        try {
+            const city = await City.bulkCreate(
+            data
+            );
+            return city;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw {error};
+        }
+    }
+
     async deleteCity(cityId) {
         try {
             await City.destroy({
